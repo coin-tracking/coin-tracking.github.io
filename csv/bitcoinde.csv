@@ -1,0 +1,5 @@
+Datum;Typ;Währung;Referenz;BTC-Adresse;Kurs;"Einheit (Kurs)";"BTC vor Gebühr";"Menge vor Gebühr";"Einheit (Menge vor Gebühr)";"BTC nach Bitcoin.de-Gebühr";"Menge nach Bitcoin.de-Gebühr";"Einheit (Menge nach Bitcoin.de-Gebühr)";"Zu- / Abgang";Kontostand
+"2020-01-01 22:22:11";Einzahlung;BTC;321eca95a7e4b38ed7dabe709313c713a941cdae7de596ad89dd1a22a2f00139;1tEstxXxXxUnA1neGb1uh7hhsGABEgFThR;;;;;;;;;0.17114101;0.26486684
+"2020-01-01 01:23:45";Verkauf;BTC;ABCDEF;;9100.00;"BTC / EUR";0.50000000;2830.00;EUR;0.49700000;2820.85;EUR;-0.30000000;1.29382724
+"2020-01-01 11:22:33";Kauf;BTC;ACDGE;;333.88;"BTC / EUR";0.12340000;95.00;EUR;0.27304590;94.33;EUR;0.27304590;0.27304590
+"2020-01-01 01:02:03";Auszahlung;BTC;321eca95a7e4b38ed7dabe709313c713a941cdae7de596ad89dd1a22a2f00139;1tEstxXxXxUnA1neGb1uh7hhsGABEgFThR;;;;;;;;;-0.84626209;0.22679457
