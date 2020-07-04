@@ -126,7 +126,7 @@ input[type="date"]:focus, input[type="time"]:focus {
 #toast-container{position:sticky;z-index:1055;top:0}#toast-wrapper{position:absolute;top:0;right:0;margin:5px}#toast-container>#toast-wrapper>.toast{min-width:150px}#toast-container>#toast-wrapper>.toast>.toast-header strong{padding-right:20px}
 
 #importBitcoinDe, #importTradeOgre, #importBinance {
-	display:none;
+  display:none;
 }
 
 </style>
@@ -453,25 +453,25 @@ input[type="date"]:focus, input[type="time"]:focus {
               <button id="remove" class="btn btn-secondary" data-toggle="modal" data-target="#modalRemove" disabled>Delete</button>
             </div>
           <div class="btn-group" role="group" aria-label="Import / Export">
-						<div id="import" class="dropdown">
-							<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownInput" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								Import
-							</button>
-							<div class="dropdown-menu" aria-labelledby="dropdownInput">
-								<div class="dropdown-item">
-									<input type="file" id="importBitcoinDe" accept=".csv" ></input>
-									<label for="importBitcoinDe">Bitcoin.de<label>
-								</div>
-								<div class="dropdown-item">
-									<input type="file" id="importBinance" accept=".csv" ></input>
-									<label for="importBinance">Binance<label>
-								</div>
-								<div class="dropdown-item">
-									<input type="file" id="importTradeOgre" accept=".csv" ></input>
-									<label for="importTradeOgre">TradeOgre<label>
-								</div>
-							</div>
-						</div>
+            <div id="import" class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownInput" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Import
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownInput">
+                <div class="dropdown-item">
+                  <input type="file" id="importBitcoinDe" accept=".csv" ></input>
+                  <label for="importBitcoinDe">Bitcoin.de<label>
+                </div>
+                <div class="dropdown-item">
+                  <input type="file" id="importBinance" accept=".csv" ></input>
+                  <label for="importBinance">Binance<label>
+                </div>
+                <div class="dropdown-item">
+                  <input type="file" id="importTradeOgre" accept=".csv" ></input>
+                  <label for="importTradeOgre">TradeOgre<label>
+                </div>
+              </div>
+            </div>
             <button id="export" class="btn btn-secondary" data-toggle="modal" data-target="#modalExport">Export</button>
           </div>
           <button id="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalSettings">
@@ -641,79 +641,79 @@ input[type="date"]:focus, input[type="time"]:focus {
       $('#modalRemove').modal('hide');
       createToast("success", "SUCCESS", "", "Row successfully removed.", 5000);
     });
-		
-		// import csv from bitcoin.de
-		$('#importBitcoinDe').parse({
-			config: {
-				skipEmptyLines: true,
-				complete: parseBitcoinDe,
-			},
-		});
+    
+    // import csv from bitcoin.de
+    $('#importBitcoinDe').parse({
+      config: {
+        skipEmptyLines: true,
+        complete: parseBitcoinDe,
+      },
+    });
 
-		// import csv from binance
-		$('#importBinance').parse({
-			config: {
-				skipEmptyLines: true,
-				complete: parseBinance,
-			},
-		});
+    // import csv from binance
+    $('#importBinance').parse({
+      config: {
+        skipEmptyLines: true,
+        complete: parseBinance,
+      },
+    });
 
-		// import csv from TradeOgre
-		$('#importTradeOgre').parse({
-			config: {
-				skipEmptyLines: true,
-				complete: parseTradeOgre,
-			},
-		});
+    // import csv from TradeOgre
+    $('#importTradeOgre').parse({
+      config: {
+        skipEmptyLines: true,
+        complete: parseTradeOgre,
+      },
+    });
 });
 
 function parseBitcoinDe(results) {
-	var data = results.data;
+  var data = results.data;
   var table = $('#table');
-	var tableRows = []; 
-	for (i = 1; i < data.length; i++) {
-		var row = data[i];
-		var cells = row.join(";").split(";");
-		var tableRow = {};
-		tableRow["type"] = cells[1];
-		tableRow["buy"] = "";
-		tableRow["buy-currency"] = "";
-		tableRow["sell"] = "";
-		tableRow["sell-currency"] = "";
-		tableRow["fee"] = "";
-		tableRow["fee-currency"] = "";
-		tableRow["exchange"] = "Bitcoin.de";
-		tableRow["comment"] = "";
-		tableRow["timestamp"] = moment(cells[0]).format('X');
-		tableRows.push(tableRow);
-	}
+  var tableRows = []; 
+  for (i = 1; i < data.length; i++) {
+    var row = data[i];
+    var cells = row.join(";").split(";");
+    var tableRow = {};
+    tableRow["type"] = cells[1];
+    tableRow["buy"] = "";
+    tableRow["buy-currency"] = "";
+    tableRow["sell"] = "";
+    tableRow["sell-currency"] = "";
+    tableRow["fee"] = "";
+    tableRow["fee-currency"] = "";
+    tableRow["exchange"] = "Bitcoin.de";
+    tableRow["comment"] = "";
+    tableRow["timestamp"] = moment(cells[0]).format('X');
+    tableRows.push(tableRow);
+  }
   table.bootstrapTable('append', tableRows);
 }
 
 function parseBinance(results) {
-	//TODO
+  //TODO
 }
 
 function parseTradeOgre(results) {
-	var data = results.data;
-	var table = $('#table');
-	var tableRows = []; 
-	for (i = 1; i < data.length; i++) {
-		var row = data[i];
-		var cells = row.join(";").split(";");
-		var tableRow = {};
-		tableRow["type"] = cells[0];
-		tableRow["buy"] = "";
-		tableRow["buy-currency"] = "";
-		tableRow["sell"] = "";
-		tableRow["sell-currency"] = "";
-		tableRow["fee"] = "";
-		tableRow["fee-currency"] = "";
-		tableRow["exchange"] = "TradeOgre";
-		tableRow["comment"] = "";
-		tableRow["timestamp"] = moment(cells[2]).format('X');
-		tableRows.push(tableRow);
-	}
+  var data = results.data;
+  var table = $('#table');
+  var tableRows = []; 
+  for (i = 1; i < data.length; i++) {
+    var row = data[i];
+    var cells = row.join(";").split(";");
+    var tableRow = {};
+    tableRow["type"] = cells[0];
+    tableRow["buy"] = "";
+    tableRow["buy-currency"] = "";
+    tableRow["sell"] = "";
+    tableRow["sell-currency"] = "";
+    tableRow["fee"] = "";
+    tableRow["fee-currency"] = "";
+    tableRow["exchange"] = "TradeOgre";
+    tableRow["comment"] = "";
+    tableRow["timestamp"] = moment(cells[2]).format('X');
+    tableRows.push(tableRow);
+  }
   table.bootstrapTable('append', tableRows);
 }
 
